@@ -14,3 +14,31 @@ Stack trace:
 #0 /home/ubuntu/workspace/api/contact/index.php(12): PDO->__construct('mysql:host=loca...', 'alesanchezr', 'sss')
 #1 {main}
   thrown in /home/ubuntu/workspace/api/contact/index.php on line 12
+[12-Jun-2018 17:31:26 UTC] PHP Fatal error:  Call to a member function orderBy() on a non-object in /home/ubuntu/workspace/api/contact/routes.php on line 16
+[12-Jun-2018 17:31:26 UTC] PHP Stack trace:
+[12-Jun-2018 17:31:26 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/contact/index.php:0
+[12-Jun-2018 17:31:26 UTC] PHP   2. SlimAPI->run() /home/ubuntu/workspace/api/contact/index.php:19
+[12-Jun-2018 17:31:26 UTC] PHP   3. Slim\App->run() /home/ubuntu/workspace/api/SlimAPI.php:124
+[12-Jun-2018 17:31:26 UTC] PHP   4. Slim\App->process() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:314
+[12-Jun-2018 17:31:26 UTC] PHP   5. Slim\App->callMiddlewareStack() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:406
+[12-Jun-2018 17:31:26 UTC] PHP   6. Slim\App->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php:117
+[12-Jun-2018 17:31:26 UTC] PHP   7. Slim\Route->run() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:513
+[12-Jun-2018 17:31:26 UTC] PHP   8. Slim\Route->callMiddlewareStack() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:313
+[12-Jun-2018 17:31:26 UTC] PHP   9. Slim\Route->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php:117
+[12-Jun-2018 17:31:26 UTC] PHP  10. Slim\Handlers\Strategies\RequestResponse->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:335
+[12-Jun-2018 17:31:26 UTC] PHP  11. call_user_func:{/home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
+[12-Jun-2018 17:31:26 UTC] PHP  12. Closure->{closure:/home/ubuntu/workspace/api/contact/routes.php:15-18}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
+[12-Jun-2018 17:31:50 UTC] PHP Fatal error:  Call to a member function orderBy() on a non-object in /home/ubuntu/workspace/api/contact/routes.php on line 16
+[12-Jun-2018 17:31:50 UTC] PHP Stack trace:
+[12-Jun-2018 17:31:50 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/contact/index.php:0
+[12-Jun-2018 17:31:50 UTC] PHP   2. SlimAPI->run() /home/ubuntu/workspace/api/contact/index.php:19
+[12-Jun-2018 17:31:50 UTC] PHP   3. Slim\App->run() /home/ubuntu/workspace/api/SlimAPI.php:124
+[12-Jun-2018 17:31:50 UTC] PHP   4. Slim\App->process() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:314
+[12-Jun-2018 17:31:50 UTC] PHP   5. Slim\App->callMiddlewareStack() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:406
+[12-Jun-2018 17:31:50 UTC] PHP   6. Slim\App->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php:117
+[12-Jun-2018 17:31:50 UTC] PHP   7. Slim\Route->run() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:513
+[12-Jun-2018 17:31:50 UTC] PHP   8. Slim\Route->callMiddlewareStack() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:313
+[12-Jun-2018 17:31:50 UTC] PHP   9. Slim\Route->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php:117
+[12-Jun-2018 17:31:50 UTC] PHP  10. Slim\Handlers\Strategies\RequestResponse->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:335
+[12-Jun-2018 17:31:50 UTC] PHP  11. call_user_func:{/home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
+[12-Jun-2018 17:31:50 UTC] PHP  12. Closure->{closure:/home/ubuntu/workspace/api/contact/routes.php:15-18}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41

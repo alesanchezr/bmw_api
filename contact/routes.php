@@ -13,7 +13,7 @@ require('../ActiveCampaign/ACAPI.php');
 function addAPIRoutes($api){
 
 	$api->get('/all', function(Request $request, Response $response, array $args) use ($api) {
-        $contacts = $api->db['mysql']->contact()->fetchAll();
+        $contacts = $api->db['mysql']->contact()->orderBy( 'created_at', 'DESC' )->fetchAll();
 		return $response->withJson($contacts);	
 	});
 	

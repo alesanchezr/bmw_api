@@ -26,6 +26,7 @@ class SlimAPI{
     var $allowedURLs = [
             'https://bmw-crm-alesanchezr.c9users.io',
             'https://crm.fetesevents.com',
+            'https://bmw-crm-alesanchezr.c9users.io',
             'https://apps.fetesevents.com',
         ];
     var $allowedMethods = ['GET','POST','PUT','DELETE','OPTIONS'];
