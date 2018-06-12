@@ -24,7 +24,9 @@ class SlimAPI{
     var $db = [];
     var $debug = false;
     var $allowedURLs = [
-            'https://bmw-crm-alesanchezr.c9users.io'
+            'https://bmw-crm-alesanchezr.c9users.io',
+            'https://crm.fetesevents.com',
+            'https://apps.fetesevents.com',
         ];
     var $allowedMethods = ['GET','POST','PUT','DELETE','OPTIONS'];
     
