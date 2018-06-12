@@ -4,3 +4,8 @@
 [12-Jun-2018 15:21:52 UTC] PHP Fatal error:  require_once(): Failed opening required '../../vendor/autoload.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/api/contact/index.php on line 2
 [12-Jun-2018 15:21:52 UTC] PHP Stack trace:
 [12-Jun-2018 15:21:52 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/contact/index.php:0
+[12-Jun-2018 15:26:12 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'BD_USERNAME'@'localhost' (using password: NO)' in /home/ubuntu/workspace/api/contact/index.php:12
+Stack trace:
+#0 /home/ubuntu/workspace/api/contact/index.php(12): PDO->__construct('mysql:host=loca...', 'BD_USERNAME', '')
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/contact/index.php on line 12
