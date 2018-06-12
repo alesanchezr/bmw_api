@@ -13,7 +13,7 @@ require('../ActiveCampaign/ACAPI.php');
 function addAPIRoutes($api){
 
 	$api->get('/all', function(Request $request, Response $response, array $args) use ($api) {
-        $contacts = $api->db['mysql']->contact()->orderBy( 'created_at', 'DESC' )->fetchAll();
+        $contacts = $api->db['mysql']->contact()->orderBy( 'subscribe_date', 'DESC' )->fetchAll();
 		return $response->withJson($contacts);	
 	});
 	
@@ -47,6 +47,7 @@ function addAPIRoutes($api){
 			'last_name' => $contact->last_name,
 			'email' => $contact->email,
 			'phone' => $contact->phone,
+			'subscribe_date' => $contact->sdate,
 			'ac_id' => $contact->name
 		];
         foreach($contact->fields as $id => $field){
