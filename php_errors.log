@@ -9,3 +9,8 @@ Stack trace:
 #0 /home/ubuntu/workspace/api/contact/index.php(12): PDO->__construct('mysql:host=loca...', 'BD_USERNAME', '')
 #1 {main}
   thrown in /home/ubuntu/workspace/api/contact/index.php on line 12
+[12-Jun-2018 15:30:57 UTC] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [1045] Access denied for user 'alesanchezr'@'localhost' (using password: YES)' in /home/ubuntu/workspace/api/contact/index.php:12
+Stack trace:
+#0 /home/ubuntu/workspace/api/contact/index.php(12): PDO->__construct('mysql:host=loca...', 'alesanchezr', 'sss')
+#1 {main}
+  thrown in /home/ubuntu/workspace/api/contact/index.php on line 12

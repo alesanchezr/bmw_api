@@ -9,7 +9,7 @@
 		'name' => 'Contacts API'
 	]);
 	//$api->addReadme('/','./README.md');
-	$pdo = new \PDO( 'mysql:host='.DB_HOST.';dbname='.DB_NAME.';dbpassword='.DB_PASS,DB_USERNAME,'' );
+	$pdo = new \PDO( 'mysql:host='.DB_HOST.';dbname='.DB_NAME,DB_USERNAME,DB_PASS );
 	
 	$db = new \LessQL\Database( $pdo );
 	$db->setPrimary( 'contact', 'id' );
