@@ -35,23 +35,21 @@ function addAPIRoutes($api){
         else if(isset($parsedBody['contact']['email'])) $userEmail = $parsedBody['contact']['email'];
         else throw new Exception('Please specify the user email', 404);
         
-        //try{
-            $contact = \AC\ACAPI::getContactByEmail($userEmail);
-        //}catch(Exception $e){ return $response->withJson(['The contact was not found']); }
+        $contact = \AC\ACAPI::getContactByEmail($userEmail);
         if(empty($contact)) return $response->withJson(['The contact was not found']);
         
         $contactInfo = [];
         $contactToSave = [
 			'FIRST_NAME' => $contact->first_name,
-			'LAST_NAME' => $contact->last_name
+			'LAST_NAME' => (!empty($contact->last_name)) ? $contact->last_name : 'undefined'
 		];
         $contactToSave['CONTACTINFOS'][] = (object) array('TYPE' => 'EMAIL','LABEL' => 'WORK','DETAIL' => $contact->email);
         $contactToSave['CONTACTINFOS'][] = (object) array('TYPE' => 'PHONE','LABEL' => 'WORK','DETAIL' => $contact->phone);
 
 		$leadToSave = [
 			'FIRST_NAME' => $contact->first_name,
-			'LAST_NAME' => $contact->last_name,
-			'TITLE' =>  $contact->first_name.' '.$contact->last_name,
+			'LAST_NAME' => (!empty($contact->last_name)) ? $contact->last_name : 'undefined',
+ 			'TITLE' =>  $contact->first_name.' '.$contact->last_name,
             'EMAIL_ADDRESS' => $contact->email,
             'MOBILE_PHONE_NUMBER' => $contact->phone,
             'PHONE_NUMBER' => $contact->phone,
@@ -64,9 +62,9 @@ function addAPIRoutes($api){
             else if($field->perstag == 'UTMFORM') $leadToSave['CUSTOMFIELDS'][] = (object) [ 'CUSTOM_FIELD_ID'=>'utm_form__c', 'FIELD_VALUE'=>$field->val];
             else if($field->perstag == 'EVENT_DATE') $leadToSave['CUSTOMFIELDS'][] = (object) [ 'CUSTOM_FIELD_ID'=>'event_date__c', 'FIELD_VALUE'=>$field->val];
             else if($field->perstag == 'BUDGET') $leadToSave['CUSTOMFIELDS'][] = (object) [ 'CUSTOM_FIELD_ID'=>'budget__c', 'FIELD_VALUE'=>$field->val];
-            //else if($field->perstag == 'UTMCAMPAIGN') $leadToSave['CUSTOMFIELDS'][] = (object) [ 'CUSTOM_FIELD_ID'=>'utm_campaign__c', 'FIELD_VALUE'=>$field->val];
+            else if($field->perstag == 'UTMCAMPAIGN') $leadToSave['CUSTOMFIELDS'][] = (object) [ 'CUSTOM_FIELD_ID'=>'utm_campaign__c', 'FIELD_VALUE'=>$field->val];
         }
-		//print_r($leadToSave);die();
+
         $i = new Insightly(INSIGLY_KEY);
         $resp = $i->addContact((object) $contactToSave);
         $resp = $i->addLead((object) $leadToSave);
