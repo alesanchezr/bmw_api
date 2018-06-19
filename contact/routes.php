@@ -54,6 +54,7 @@ function addAPIRoutes($api){
 			'TITLE' =>  $contact->first_name.' '.$contact->last_name,
             'EMAIL_ADDRESS' => $contact->email,
             'MOBILE_PHONE_NUMBER' => $contact->phone,
+            'PHONE_NUMBER' => $contact->phone,
             'DATE_CREATED_UTC' => $contact->sdate
 		];
 		
@@ -63,9 +64,9 @@ function addAPIRoutes($api){
             else if($field->perstag == 'UTMFORM') $leadToSave['CUSTOMFIELDS'][] = (object) [ 'CUSTOM_FIELD_ID'=>'utm_form__c', 'FIELD_VALUE'=>$field->val];
             else if($field->perstag == 'EVENT_DATE') $leadToSave['CUSTOMFIELDS'][] = (object) [ 'CUSTOM_FIELD_ID'=>'event_date__c', 'FIELD_VALUE'=>$field->val];
             else if($field->perstag == 'BUDGET') $leadToSave['CUSTOMFIELDS'][] = (object) [ 'CUSTOM_FIELD_ID'=>'budget__c', 'FIELD_VALUE'=>$field->val];
-            else if($field->perstag == 'UTMCAMPAIGN') $leadToSave['CUSTOMFIELDS'][] = (object) [ 'CUSTOM_FIELD_ID'=>'utm_campaign__c', 'FIELD_VALUE'=>$field->val];
+            //else if($field->perstag == 'UTMCAMPAIGN') $leadToSave['CUSTOMFIELDS'][] = (object) [ 'CUSTOM_FIELD_ID'=>'utm_campaign__c', 'FIELD_VALUE'=>$field->val];
         }
-		
+		print_r($leadToSave);die();
         $i = new Insightly(INSIGLY_KEY);
         $resp = $i->addContact((object) $contactToSave);
         $resp = $i->addLead((object) $leadToSave);
