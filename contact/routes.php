@@ -66,7 +66,7 @@ function addAPIRoutes($api){
             else if($field->perstag == 'BUDGET') $leadToSave['CUSTOMFIELDS'][] = (object) [ 'CUSTOM_FIELD_ID'=>'budget__c', 'FIELD_VALUE'=>$field->val];
             //else if($field->perstag == 'UTMCAMPAIGN') $leadToSave['CUSTOMFIELDS'][] = (object) [ 'CUSTOM_FIELD_ID'=>'utm_campaign__c', 'FIELD_VALUE'=>$field->val];
         }
-		print_r($leadToSave);die();
+		//print_r($leadToSave);die();
         $i = new Insightly(INSIGLY_KEY);
         $resp = $i->addContact((object) $contactToSave);
         $resp = $i->addLead((object) $leadToSave);
