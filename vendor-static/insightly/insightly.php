@@ -165,6 +165,15 @@ class Insightly{
   public function __construct($apikey){
     $this->apikey = $apikey;
   }
+  
+  private $salesUsers = [
+    1633449, //daniela
+    1633450 //maite
+  ];
+  
+  public function getRandomSalesUser(){
+    return $this->salesUsers[rand(0, count($this->salesUsers)-1)];
+  }
 
   /**
    * Gets a list of contacts 

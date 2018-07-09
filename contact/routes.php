@@ -29,6 +29,8 @@ function addAPIRoutes($api){
 	
 	$api->post('/insightly/sync', function (Request $request, Response $response, array $args) use ($api) {
 	    
+	    $i = new Insightly(INSIGLY_KEY);
+        
         $parsedBody = $request->getParsedBody();
         $userEmail = null;
         if(!empty($parsedBody['email'])) $userEmail = $parsedBody['email'];
@@ -56,6 +58,12 @@ function addAPIRoutes($api){
             'DATE_CREATED_UTC' => $contact->sdate
 		];
 		
+		if(isset($_GET['random_owner'])){
+		    $random = $i->getRandomSalesUser();
+		    $leadToSave['RESPONSIBLE_USER_ID'] = $random;
+		    $leadToSave['OWNER_USER_ID'] = $random;
+		} 
+		
 		$leadToSave['CUSTOMFIELDS'] = [];
         foreach($contact->fields as $id => $field){
             if($field->perstag == 'CLIENT_COMMENTS') $leadToSave['CUSTOMFIELDS'][] =  (object) [ 'CUSTOM_FIELD_ID'=>'client_comments__c', 'FIELD_VALUE'=>$field->val];
@@ -65,7 +73,6 @@ function addAPIRoutes($api){
             else if($field->perstag == 'UTMCAMPAIGN') $leadToSave['CUSTOMFIELDS'][] = (object) [ 'CUSTOM_FIELD_ID'=>'utm_campaign__c', 'FIELD_VALUE'=>$field->val];
         }
 
-        $i = new Insightly(INSIGLY_KEY);
         $resp = $i->addContact((object) $contactToSave);
         $resp = $i->addLead((object) $leadToSave);
         
