@@ -56,3 +56,18 @@ Stack trace:
 [18-Jun-2018 15:52:15 UTC] PHP  10. Slim\Handlers\Strategies\RequestResponse->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:335
 [18-Jun-2018 15:52:15 UTC] PHP  11. call_user_func:{/home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
 [18-Jun-2018 15:52:15 UTC] PHP  12. Closure->{closure:/home/ubuntu/workspace/api/contact/routes.php:30-56}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
+[10-Jul-2018 20:22:54 UTC] PHP Fatal error:  Using $this when not in object context in /home/ubuntu/workspace/api/vendor-static/insightly/insightly.php on line 175
+[10-Jul-2018 20:22:54 UTC] PHP Stack trace:
+[10-Jul-2018 20:22:54 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/contact/index.php:0
+[10-Jul-2018 20:22:54 UTC] PHP   2. SlimAPI->run() /home/ubuntu/workspace/api/contact/index.php:19
+[10-Jul-2018 20:22:54 UTC] PHP   3. Slim\App->run() /home/ubuntu/workspace/api/SlimAPI.php:124
+[10-Jul-2018 20:22:54 UTC] PHP   4. Slim\App->process() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:314
+[10-Jul-2018 20:22:54 UTC] PHP   5. Slim\App->callMiddlewareStack() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:406
+[10-Jul-2018 20:22:54 UTC] PHP   6. Slim\App->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php:117
+[10-Jul-2018 20:22:54 UTC] PHP   7. Slim\Route->run() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:513
+[10-Jul-2018 20:22:54 UTC] PHP   8. Slim\Route->callMiddlewareStack() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:313
+[10-Jul-2018 20:22:54 UTC] PHP   9. Slim\Route->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php:117
+[10-Jul-2018 20:22:54 UTC] PHP  10. Slim\Handlers\Strategies\RequestResponse->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:335
+[10-Jul-2018 20:22:54 UTC] PHP  11. call_user_func:{/home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
+[10-Jul-2018 20:22:54 UTC] PHP  12. Closure->{closure:/home/ubuntu/workspace/api/contact/routes.php:30-80}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
+[10-Jul-2018 20:22:54 UTC] PHP  13. Insightly::getRandomSalesUser() /home/ubuntu/workspace/api/contact/routes.php:32

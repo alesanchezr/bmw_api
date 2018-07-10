@@ -166,13 +166,13 @@ class Insightly{
     $this->apikey = $apikey;
   }
   
-  private $salesUsers = [
+  private static $salesUsers = [
     1633449, //daniela
     1633450 //maite
   ];
   
-  public function getRandomSalesUser(){
-    return $this->salesUsers[rand(0, count($this->salesUsers)-1)];
+  public static function getRandomSalesUser(){
+    return self::$salesUsers[rand(0, count(self::$salesUsers)-1)];
   }
 
   /**

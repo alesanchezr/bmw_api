@@ -29,7 +29,7 @@ function addAPIRoutes($api){
 	
 	$api->post('/insightly/sync', function (Request $request, Response $response, array $args) use ($api) {
 	    
-	    $i = new Insightly(INSIGLY_KEY);
+	    $i = new Insightly($GLOBALS['INSIGLY_KEYS'][Insightly::getRandomSalesUser()]);
         
         $parsedBody = $request->getParsedBody();
         $userEmail = null;
@@ -59,7 +59,7 @@ function addAPIRoutes($api){
 		];
 		
 		if(isset($_GET['random_owner'])){
-		    $random = $i->getRandomSalesUser();
+		    $random = Insightly::getRandomSalesUser();
 		    $leadToSave['RESPONSIBLE_USER_ID'] = $random;
 		    $leadToSave['OWNER_USER_ID'] = $random;
 		} 
