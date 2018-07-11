@@ -171,8 +171,11 @@ class Insightly{
     1633450 //maite
   ];
   
-  public static function getRandomSalesUser(){
-    return self::$salesUsers[rand(0, count(self::$salesUsers)-1)];
+  public static function getSalesUser($algorithm=null){
+    switch($algorithm){
+      case "random": return self::$salesUsers[rand(0, count(self::$salesUsers)-1)]; break;
+      case null: return self::$salesUsers[0];
+    }
   }
 
   /**

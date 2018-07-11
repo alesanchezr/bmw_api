@@ -7,6 +7,7 @@ use \BreatheCode\BCWrapper;
 
 require('../vendor-static/ActiveCampaign/ACAPI.php');
 require('../vendor-static/insightly/insightly.php');
+require('./functions.php');
 
 \AC\ACAPI::start(AC_API_KEY);
 \AC\ACAPI::setupEventTracking('798615081', AC_EVENT_KEY);
@@ -29,53 +30,73 @@ function addAPIRoutes($api){
 	
 	$api->post('/insightly/sync', function (Request $request, Response $response, array $args) use ($api) {
 	    
-	    $i = new Insightly($GLOBALS['INSIGLY_KEYS'][Insightly::getRandomSalesUser()]);
-        
         $parsedBody = $request->getParsedBody();
         $userEmail = null;
         if(!empty($parsedBody['email'])) $userEmail = $parsedBody['email'];
         else if(isset($parsedBody['contact']['email'])) $userEmail = $parsedBody['contact']['email'];
         else throw new Exception('Please specify the user email', 404);
-        
-        $contact = \AC\ACAPI::getContactByEmail($userEmail);
-        if(empty($contact)) return $response->withJson(['The contact was not found']);
-        
-        $contactInfo = [];
-        $contactToSave = [
-			'FIRST_NAME' => $contact->first_name,
-			'LAST_NAME' => (!empty($contact->last_name)) ? $contact->last_name : 'undefined'
-		];
-        $contactToSave['CONTACTINFOS'][] = (object) array('TYPE' => 'EMAIL','LABEL' => 'WORK','DETAIL' => $contact->email);
-        $contactToSave['CONTACTINFOS'][] = (object) array('TYPE' => 'PHONE','LABEL' => 'WORK','DETAIL' => $contact->phone);
 
-		$leadToSave = [
-			'FIRST_NAME' => $contact->first_name,
-			'LAST_NAME' => (!empty($contact->last_name)) ? $contact->last_name : 'undefined',
- 			'TITLE' =>  $contact->first_name.' '.$contact->last_name,
-            'EMAIL_ADDRESS' => $contact->email,
-            'MOBILE_PHONE_NUMBER' => $contact->phone,
-            'PHONE_NUMBER' => $contact->phone,
-            'DATE_CREATED_UTC' => $contact->sdate
-		];
-		
-		if(isset($_GET['random_owner'])){
-		    $random = Insightly::getRandomSalesUser();
-		    $leadToSave['RESPONSIBLE_USER_ID'] = $random;
-		    $leadToSave['OWNER_USER_ID'] = $random;
-		} 
-		
-		$leadToSave['CUSTOMFIELDS'] = [];
-        foreach($contact->fields as $id => $field){
-            if($field->perstag == 'CLIENT_COMMENTS') $leadToSave['CUSTOMFIELDS'][] =  (object) [ 'CUSTOM_FIELD_ID'=>'client_comments__c', 'FIELD_VALUE'=>$field->val];
-            else if($field->perstag == 'UTMFORM') $leadToSave['CUSTOMFIELDS'][] = (object) [ 'CUSTOM_FIELD_ID'=>'utm_form__c', 'FIELD_VALUE'=>$field->val];
-            else if($field->perstag == 'EVENT_DATE') $leadToSave['CUSTOMFIELDS'][] = (object) [ 'CUSTOM_FIELD_ID'=>'event_date__c', 'FIELD_VALUE'=>$field->val];
-            else if($field->perstag == 'BUDGET') $leadToSave['CUSTOMFIELDS'][] = (object) [ 'CUSTOM_FIELD_ID'=>'budget__c', 'FIELD_VALUE'=>$field->val];
-            else if($field->perstag == 'UTMCAMPAIGN') $leadToSave['CUSTOMFIELDS'][] = (object) [ 'CUSTOM_FIELD_ID'=>'utm_campaign__c', 'FIELD_VALUE'=>$field->val];
+        $failed = $api->db['failed']->getJsonByName('leads');
+        try{
+            $resp = Functions::addLead($userEmail);
+            $failed = array_filter($failed, function($attempt) use ($userEmail){ 
+                return ($attempt->email != $userEmail);
+            });
+            
+            return $response->withJson($resp);
+        }catch(Exception $e){
+            
+            $isPresent = (count(array_filter($failed, function($attempt) use ($userEmail){ 
+                return ($attempt->email == $userEmail);
+            })) > 0);
+            if($isPresent){
+                $failed = array_map(function($attempt) use ($userEmail){
+                    if($attempt->email == $userEmail){
+                        $found = true;
+                        $attempt->attemps++;
+                        $attempt->last_attempt = time();
+                    }
+                    return $attempt;
+                }, $failed);
+            }
+            else{
+                array_push($failed, ['email' => $userEmail, "last_attempt" => time(), "attemps" => 1, "error" => $e->getMessage()]);
+            }
+            $api->db['failed']->toFile('leads')->save($failed);
+
+            throw $e;
         }
-
-        $resp = $i->addContact((object) $contactToSave);
-        $resp = $i->addLead((object) $leadToSave);
         
+	});
+	
+	$api->post('/pending/sync', function (Request $request, Response $response, array $args) use ($api) {
+	    
+	    $failed = $api->db['failed']->getJsonByName('leads');
+	    $resp = [];
+	    if(count($failed)==0) return $response->withJson("Nothing to process"); 
+	    foreach($failed as $contact){
+            try{
+                Functions::addLead($contact->email);
+                $resp[] = "SUCCESS: The contact $contact->email was added into insiglty";
+                $failed = array_filter($failed, function($attempt) use ($contact){ 
+                    return ($attempt->email != $contact->email);
+                });
+                $api->db['failed']->toFile('leads')->save($failed);
+            }catch(Exception $e){
+                
+                $resp[] = "FAIL: The contact $contact->email was NOT added into insiglty: ".$e->getMessage();
+                $failed = array_map(function($attempt) use ($contact){
+                    if($attempt->email == $contact->email){
+                        $found = true;
+                        $attempt->attemps++;
+                        $attempt->last_attempt = time();
+                    }
+                    return $attempt;
+                }, $failed);
+                $api->db['failed']->toFile('leads')->save($failed);
+            }
+	    }
+	    
         return $response->withJson($resp);
 	});
 	

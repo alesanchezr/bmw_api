@@ -71,3 +71,218 @@ Stack trace:
 [10-Jul-2018 20:22:54 UTC] PHP  11. call_user_func:{/home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
 [10-Jul-2018 20:22:54 UTC] PHP  12. Closure->{closure:/home/ubuntu/workspace/api/contact/routes.php:30-80}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
 [10-Jul-2018 20:22:54 UTC] PHP  13. Insightly::getRandomSalesUser() /home/ubuntu/workspace/api/contact/routes.php:32
+[11-Jul-2018 15:10:54 UTC] PHP Fatal error:  Class 'JsonPDO' not found in /home/ubuntu/workspace/api/contact/index.php on line 17
+[11-Jul-2018 15:10:54 UTC] PHP Stack trace:
+[11-Jul-2018 15:10:54 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/contact/index.php:0
+[11-Jul-2018 15:11:10 UTC] PHP Warning:  require_once(../JsonPDO.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/api/contact/index.php on line 4
+[11-Jul-2018 15:11:10 UTC] PHP Stack trace:
+[11-Jul-2018 15:11:10 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/contact/index.php:0
+[11-Jul-2018 15:11:10 UTC] PHP Fatal error:  require_once(): Failed opening required '../JsonPDO.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/api/contact/index.php on line 4
+[11-Jul-2018 15:11:10 UTC] PHP Stack trace:
+[11-Jul-2018 15:11:10 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/contact/index.php:0
+[11-Jul-2018 15:12:12 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Unable to get file "failed/leads.json' in /home/ubuntu/workspace/api/JsonPDO.php:199
+Stack trace:
+#0 /home/ubuntu/workspace/api/JsonPDO.php(92): JsonPDO->throwError('Unable to get f...')
+#1 /home/ubuntu/workspace/api/JsonPDO.php(67): JsonPDO->parseFile('failed/leads.js...', '[]')
+#2 /home/ubuntu/workspace/api/JsonPDO.php(27): JsonPDO->getDataStructure('failed/', '[]')
+#3 /home/ubuntu/workspace/api/contact/index.php(18): JsonPDO->__construct('failed/', '[]', false)
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/JsonPDO.php on line 199
+[11-Jul-2018 15:13:18 UTC] PHP Warning:  scandir(contact/failed/): failed to open dir: No such file or directory in /home/ubuntu/workspace/api/JsonPDO.php on line 47
+[11-Jul-2018 15:13:18 UTC] PHP Stack trace:
+[11-Jul-2018 15:13:18 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/contact/index.php:0
+[11-Jul-2018 15:13:18 UTC] PHP   2. JsonPDO->__construct() /home/ubuntu/workspace/api/contact/index.php:18
+[11-Jul-2018 15:13:18 UTC] PHP   3. JsonPDO->getDataStructure() /home/ubuntu/workspace/api/JsonPDO.php:27
+[11-Jul-2018 15:13:18 UTC] PHP   4. scandir() /home/ubuntu/workspace/api/JsonPDO.php:47
+[11-Jul-2018 15:13:18 UTC] PHP Warning:  scandir(): (errno 2): No such file or directory in /home/ubuntu/workspace/api/JsonPDO.php on line 47
+[11-Jul-2018 15:13:18 UTC] PHP Stack trace:
+[11-Jul-2018 15:13:18 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/contact/index.php:0
+[11-Jul-2018 15:13:18 UTC] PHP   2. JsonPDO->__construct() /home/ubuntu/workspace/api/contact/index.php:18
+[11-Jul-2018 15:13:18 UTC] PHP   3. JsonPDO->getDataStructure() /home/ubuntu/workspace/api/JsonPDO.php:27
+[11-Jul-2018 15:13:18 UTC] PHP   4. scandir() /home/ubuntu/workspace/api/JsonPDO.php:47
+[11-Jul-2018 15:13:18 UTC] PHP Warning:  Invalid argument supplied for foreach() in /home/ubuntu/workspace/api/JsonPDO.php on line 50
+[11-Jul-2018 15:13:18 UTC] PHP Stack trace:
+[11-Jul-2018 15:13:18 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/contact/index.php:0
+[11-Jul-2018 15:13:18 UTC] PHP   2. JsonPDO->__construct() /home/ubuntu/workspace/api/contact/index.php:18
+[11-Jul-2018 15:13:18 UTC] PHP   3. JsonPDO->getDataStructure() /home/ubuntu/workspace/api/JsonPDO.php:27
+[11-Jul-2018 15:13:19 UTC] PHP Fatal error:  Uncaught exception 'RuntimeException' with message 'Unexpected data in output buffer. Maybe you have characters before an opening <?php tag?' in /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:622
+Stack trace:
+#0 /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php(334): Slim\App->finalize(Object(Slim\Http\Response))
+#1 /home/ubuntu/workspace/api/SlimAPI.php(124): Slim\App->run()
+#2 /home/ubuntu/workspace/api/contact/index.php(21): SlimAPI->run()
+#3 {main}
+  thrown in /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php on line 622
+[11-Jul-2018 15:13:28 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Unable to get file "failed/leads.json' in /home/ubuntu/workspace/api/JsonPDO.php:199
+Stack trace:
+#0 /home/ubuntu/workspace/api/JsonPDO.php(92): JsonPDO->throwError('Unable to get f...')
+#1 /home/ubuntu/workspace/api/JsonPDO.php(67): JsonPDO->parseFile('failed/leads.js...', '[]')
+#2 /home/ubuntu/workspace/api/JsonPDO.php(27): JsonPDO->getDataStructure('failed/', '[]')
+#3 /home/ubuntu/workspace/api/contact/index.php(18): JsonPDO->__construct('failed/', '[]', false)
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/JsonPDO.php on line 199
+[11-Jul-2018 15:13:40 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'The file "failed/leads.json" has invalid syntax' in /home/ubuntu/workspace/api/JsonPDO.php:199
+Stack trace:
+#0 /home/ubuntu/workspace/api/JsonPDO.php(94): JsonPDO->throwError('The file "faile...')
+#1 /home/ubuntu/workspace/api/JsonPDO.php(67): JsonPDO->parseFile('failed/leads.js...', '[]')
+#2 /home/ubuntu/workspace/api/JsonPDO.php(27): JsonPDO->getDataStructure('failed/', '[]')
+#3 /home/ubuntu/workspace/api/contact/index.php(18): JsonPDO->__construct('failed/', '[]', false)
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/JsonPDO.php on line 199
+[11-Jul-2018 15:14:09 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Unable to get file "failed/leads.json' in /home/ubuntu/workspace/api/JsonPDO.php:199
+Stack trace:
+#0 /home/ubuntu/workspace/api/JsonPDO.php(92): JsonPDO->throwError('Unable to get f...')
+#1 /home/ubuntu/workspace/api/JsonPDO.php(67): JsonPDO->parseFile('failed/leads.js...', '[]')
+#2 /home/ubuntu/workspace/api/JsonPDO.php(27): JsonPDO->getDataStructure('failed/', '[]')
+#3 /home/ubuntu/workspace/api/contact/index.php(18): JsonPDO->__construct('failed/', '[]', false)
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/JsonPDO.php on line 199
+[11-Jul-2018 16:39:03 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Unable to get file "failed/leads.json' in /home/ubuntu/workspace/api/JsonPDO.php:199
+Stack trace:
+#0 /home/ubuntu/workspace/api/JsonPDO.php(92): JsonPDO->throwError('Unable to get f...')
+#1 /home/ubuntu/workspace/api/JsonPDO.php(67): JsonPDO->parseFile('failed/leads.js...', '[]')
+#2 /home/ubuntu/workspace/api/JsonPDO.php(27): JsonPDO->getDataStructure('failed/', '[]')
+#3 /home/ubuntu/workspace/api/contact/index.php(18): JsonPDO->__construct('failed/', '[]', false)
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/JsonPDO.php on line 199
+[11-Jul-2018 16:39:22 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Unable to get file "failed/leads.json' in /home/ubuntu/workspace/api/JsonPDO.php:199
+Stack trace:
+#0 /home/ubuntu/workspace/api/JsonPDO.php(92): JsonPDO->throwError('Unable to get f...')
+#1 /home/ubuntu/workspace/api/JsonPDO.php(67): JsonPDO->parseFile('failed/leads.js...', '[]')
+#2 /home/ubuntu/workspace/api/JsonPDO.php(27): JsonPDO->getDataStructure('failed/', '[]')
+#3 /home/ubuntu/workspace/api/contact/index.php(18): JsonPDO->__construct('failed/', '[]', false)
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/JsonPDO.php on line 199
+[11-Jul-2018 16:39:48 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'The file "failed/leads.json" has invalid syntax' in /home/ubuntu/workspace/api/JsonPDO.php:199
+Stack trace:
+#0 /home/ubuntu/workspace/api/JsonPDO.php(94): JsonPDO->throwError('The file "faile...')
+#1 /home/ubuntu/workspace/api/JsonPDO.php(67): JsonPDO->parseFile('failed/leads.js...', '[]')
+#2 /home/ubuntu/workspace/api/JsonPDO.php(27): JsonPDO->getDataStructure('failed/', '[]')
+#3 /home/ubuntu/workspace/api/contact/index.php(18): JsonPDO->__construct('failed/', '[]', false)
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/JsonPDO.php on line 199
+[11-Jul-2018 16:40:42 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'The file "failed/leads.json" has invalid syntax' in /home/ubuntu/workspace/api/JsonPDO.php:199
+Stack trace:
+#0 /home/ubuntu/workspace/api/JsonPDO.php(94): JsonPDO->throwError('The file "faile...')
+#1 /home/ubuntu/workspace/api/JsonPDO.php(67): JsonPDO->parseFile('failed/leads.js...', '[]')
+#2 /home/ubuntu/workspace/api/JsonPDO.php(27): JsonPDO->getDataStructure('failed/', '[]')
+#3 /home/ubuntu/workspace/api/contact/index.php(18): JsonPDO->__construct('failed/', '[]', false)
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/JsonPDO.php on line 199
+[11-Jul-2018 16:41:16 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'The file "failed/leads.json" has invalid syntax: []' in /home/ubuntu/workspace/api/JsonPDO.php:199
+Stack trace:
+#0 /home/ubuntu/workspace/api/JsonPDO.php(94): JsonPDO->throwError('The file "faile...')
+#1 /home/ubuntu/workspace/api/JsonPDO.php(67): JsonPDO->parseFile('failed/leads.js...', '[]')
+#2 /home/ubuntu/workspace/api/JsonPDO.php(27): JsonPDO->getDataStructure('failed/', '[]')
+#3 /home/ubuntu/workspace/api/contact/index.php(18): JsonPDO->__construct('failed/', '[]', false)
+#4 {main}
+  thrown in /home/ubuntu/workspace/api/JsonPDO.php on line 199
+[11-Jul-2018 17:17:42 UTC] PHP Fatal error:  Cannot use object of type stdClass as array in /home/ubuntu/workspace/api/contact/routes.php on line 81
+[11-Jul-2018 17:17:42 UTC] PHP Stack trace:
+[11-Jul-2018 17:17:42 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/contact/index.php:0
+[11-Jul-2018 17:17:42 UTC] PHP   2. SlimAPI->run() /home/ubuntu/workspace/api/contact/index.php:21
+[11-Jul-2018 17:17:42 UTC] PHP   3. Slim\App->run() /home/ubuntu/workspace/api/SlimAPI.php:124
+[11-Jul-2018 17:17:42 UTC] PHP   4. Slim\App->process() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:314
+[11-Jul-2018 17:17:42 UTC] PHP   5. Slim\App->callMiddlewareStack() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:406
+[11-Jul-2018 17:17:42 UTC] PHP   6. Slim\App->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php:117
+[11-Jul-2018 17:17:42 UTC] PHP   7. Slim\Route->run() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:513
+[11-Jul-2018 17:17:42 UTC] PHP   8. Slim\Route->callMiddlewareStack() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:313
+[11-Jul-2018 17:17:42 UTC] PHP   9. Slim\Route->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php:117
+[11-Jul-2018 17:17:42 UTC] PHP  10. Slim\Handlers\Strategies\RequestResponse->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:335
+[11-Jul-2018 17:17:42 UTC] PHP  11. call_user_func:{/home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
+[11-Jul-2018 17:17:42 UTC] PHP  12. Closure->{closure:/home/ubuntu/workspace/api/contact/routes.php:30-99}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
+[11-Jul-2018 17:17:42 UTC] PHP  13. array_filter() /home/ubuntu/workspace/api/contact/routes.php:82
+[11-Jul-2018 17:17:42 UTC] PHP  14. Closure->{closure:/home/ubuntu/workspace/api/contact/routes.php:80-82}() /home/ubuntu/workspace/api/contact/routes.php:82
+[11-Jul-2018 17:19:21 UTC] PHP Warning:  array_map() expects parameter 1 to be a valid callback, array must have exactly two members in /home/ubuntu/workspace/api/contact/routes.php on line 93
+[11-Jul-2018 17:19:21 UTC] PHP Stack trace:
+[11-Jul-2018 17:19:21 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/contact/index.php:0
+[11-Jul-2018 17:19:21 UTC] PHP   2. SlimAPI->run() /home/ubuntu/workspace/api/contact/index.php:21
+[11-Jul-2018 17:19:21 UTC] PHP   3. Slim\App->run() /home/ubuntu/workspace/api/SlimAPI.php:124
+[11-Jul-2018 17:19:21 UTC] PHP   4. Slim\App->process() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:314
+[11-Jul-2018 17:19:21 UTC] PHP   5. Slim\App->callMiddlewareStack() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:406
+[11-Jul-2018 17:19:21 UTC] PHP   6. Slim\App->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php:117
+[11-Jul-2018 17:19:21 UTC] PHP   7. Slim\Route->run() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:513
+[11-Jul-2018 17:19:21 UTC] PHP   8. Slim\Route->callMiddlewareStack() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:313
+[11-Jul-2018 17:19:21 UTC] PHP   9. Slim\Route->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php:117
+[11-Jul-2018 17:19:21 UTC] PHP  10. Slim\Handlers\Strategies\RequestResponse->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:335
+[11-Jul-2018 17:19:21 UTC] PHP  11. call_user_func:{/home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
+[11-Jul-2018 17:19:21 UTC] PHP  12. Closure->{closure:/home/ubuntu/workspace/api/contact/routes.php:30-99}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
+[11-Jul-2018 17:19:21 UTC] PHP  13. array_map() /home/ubuntu/workspace/api/contact/routes.php:93
+[11-Jul-2018 17:19:21 UTC] PHP Fatal error:  Class 'date' not found in /home/ubuntu/workspace/api/contact/routes.php on line 94
+[11-Jul-2018 17:19:21 UTC] PHP Stack trace:
+[11-Jul-2018 17:19:21 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/contact/index.php:0
+[11-Jul-2018 17:19:21 UTC] PHP   2. SlimAPI->run() /home/ubuntu/workspace/api/contact/index.php:21
+[11-Jul-2018 17:19:21 UTC] PHP   3. Slim\App->run() /home/ubuntu/workspace/api/SlimAPI.php:124
+[11-Jul-2018 17:19:21 UTC] PHP   4. Slim\App->process() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:314
+[11-Jul-2018 17:19:21 UTC] PHP   5. Slim\App->callMiddlewareStack() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:406
+[11-Jul-2018 17:19:21 UTC] PHP   6. Slim\App->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php:117
+[11-Jul-2018 17:19:21 UTC] PHP   7. Slim\Route->run() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:513
+[11-Jul-2018 17:19:21 UTC] PHP   8. Slim\Route->callMiddlewareStack() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:313
+[11-Jul-2018 17:19:21 UTC] PHP   9. Slim\Route->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php:117
+[11-Jul-2018 17:19:21 UTC] PHP  10. Slim\Handlers\Strategies\RequestResponse->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:335
+[11-Jul-2018 17:19:21 UTC] PHP  11. call_user_func:{/home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
+[11-Jul-2018 17:19:21 UTC] PHP  12. Closure->{closure:/home/ubuntu/workspace/api/contact/routes.php:30-99}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
+[11-Jul-2018 17:19:49 UTC] PHP Warning:  array_map() expects parameter 1 to be a valid callback, array must have exactly two members in /home/ubuntu/workspace/api/contact/routes.php on line 93
+[11-Jul-2018 17:19:49 UTC] PHP Stack trace:
+[11-Jul-2018 17:19:49 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/contact/index.php:0
+[11-Jul-2018 17:19:49 UTC] PHP   2. SlimAPI->run() /home/ubuntu/workspace/api/contact/index.php:21
+[11-Jul-2018 17:19:49 UTC] PHP   3. Slim\App->run() /home/ubuntu/workspace/api/SlimAPI.php:124
+[11-Jul-2018 17:19:49 UTC] PHP   4. Slim\App->process() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:314
+[11-Jul-2018 17:19:49 UTC] PHP   5. Slim\App->callMiddlewareStack() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:406
+[11-Jul-2018 17:19:49 UTC] PHP   6. Slim\App->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php:117
+[11-Jul-2018 17:19:49 UTC] PHP   7. Slim\Route->run() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:513
+[11-Jul-2018 17:19:49 UTC] PHP   8. Slim\Route->callMiddlewareStack() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:313
+[11-Jul-2018 17:19:49 UTC] PHP   9. Slim\Route->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php:117
+[11-Jul-2018 17:19:49 UTC] PHP  10. Slim\Handlers\Strategies\RequestResponse->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:335
+[11-Jul-2018 17:19:49 UTC] PHP  11. call_user_func:{/home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
+[11-Jul-2018 17:19:49 UTC] PHP  12. Closure->{closure:/home/ubuntu/workspace/api/contact/routes.php:30-99}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
+[11-Jul-2018 17:19:49 UTC] PHP  13. array_map() /home/ubuntu/workspace/api/contact/routes.php:93
+[11-Jul-2018 17:19:49 UTC] PHP Fatal error:  Class 'date' not found in /home/ubuntu/workspace/api/contact/routes.php on line 94
+[11-Jul-2018 17:19:49 UTC] PHP Stack trace:
+[11-Jul-2018 17:19:49 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/contact/index.php:0
+[11-Jul-2018 17:19:49 UTC] PHP   2. SlimAPI->run() /home/ubuntu/workspace/api/contact/index.php:21
+[11-Jul-2018 17:19:49 UTC] PHP   3. Slim\App->run() /home/ubuntu/workspace/api/SlimAPI.php:124
+[11-Jul-2018 17:19:49 UTC] PHP   4. Slim\App->process() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:314
+[11-Jul-2018 17:19:49 UTC] PHP   5. Slim\App->callMiddlewareStack() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:406
+[11-Jul-2018 17:19:49 UTC] PHP   6. Slim\App->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php:117
+[11-Jul-2018 17:19:49 UTC] PHP   7. Slim\Route->run() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:513
+[11-Jul-2018 17:19:49 UTC] PHP   8. Slim\Route->callMiddlewareStack() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:313
+[11-Jul-2018 17:19:49 UTC] PHP   9. Slim\Route->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php:117
+[11-Jul-2018 17:19:49 UTC] PHP  10. Slim\Handlers\Strategies\RequestResponse->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:335
+[11-Jul-2018 17:19:49 UTC] PHP  11. call_user_func:{/home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
+[11-Jul-2018 17:19:49 UTC] PHP  12. Closure->{closure:/home/ubuntu/workspace/api/contact/routes.php:30-99}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
+[11-Jul-2018 17:20:02 UTC] PHP Fatal error:  Class 'date' not found in /home/ubuntu/workspace/api/contact/routes.php on line 94
+[11-Jul-2018 17:20:02 UTC] PHP Stack trace:
+[11-Jul-2018 17:20:02 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/contact/index.php:0
+[11-Jul-2018 17:20:02 UTC] PHP   2. SlimAPI->run() /home/ubuntu/workspace/api/contact/index.php:21
+[11-Jul-2018 17:20:02 UTC] PHP   3. Slim\App->run() /home/ubuntu/workspace/api/SlimAPI.php:124
+[11-Jul-2018 17:20:02 UTC] PHP   4. Slim\App->process() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:314
+[11-Jul-2018 17:20:02 UTC] PHP   5. Slim\App->callMiddlewareStack() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:406
+[11-Jul-2018 17:20:02 UTC] PHP   6. Slim\App->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php:117
+[11-Jul-2018 17:20:02 UTC] PHP   7. Slim\Route->run() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:513
+[11-Jul-2018 17:20:02 UTC] PHP   8. Slim\Route->callMiddlewareStack() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:313
+[11-Jul-2018 17:20:02 UTC] PHP   9. Slim\Route->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php:117
+[11-Jul-2018 17:20:02 UTC] PHP  10. Slim\Handlers\Strategies\RequestResponse->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:335
+[11-Jul-2018 17:20:02 UTC] PHP  11. call_user_func:{/home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
+[11-Jul-2018 17:20:02 UTC] PHP  12. Closure->{closure:/home/ubuntu/workspace/api/contact/routes.php:30-99}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
+[11-Jul-2018 18:18:23 UTC] PHP Fatal error:  Class 'Functions' not found in /home/ubuntu/workspace/api/contact/routes.php on line 40
+[11-Jul-2018 18:18:23 UTC] PHP Stack trace:
+[11-Jul-2018 18:18:23 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/contact/index.php:0
+[11-Jul-2018 18:18:23 UTC] PHP   2. SlimAPI->run() /home/ubuntu/workspace/api/contact/index.php:21
+[11-Jul-2018 18:18:23 UTC] PHP   3. Slim\App->run() /home/ubuntu/workspace/api/SlimAPI.php:124
+[11-Jul-2018 18:18:23 UTC] PHP   4. Slim\App->process() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:314
+[11-Jul-2018 18:18:23 UTC] PHP   5. Slim\App->callMiddlewareStack() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:406
+[11-Jul-2018 18:18:23 UTC] PHP   6. Slim\App->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php:117
+[11-Jul-2018 18:18:23 UTC] PHP   7. Slim\Route->run() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/App.php:513
+[11-Jul-2018 18:18:23 UTC] PHP   8. Slim\Route->callMiddlewareStack() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:313
+[11-Jul-2018 18:18:23 UTC] PHP   9. Slim\Route->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/MiddlewareAwareTrait.php:117
+[11-Jul-2018 18:18:23 UTC] PHP  10. Slim\Handlers\Strategies\RequestResponse->__invoke() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Route.php:335
+[11-Jul-2018 18:18:23 UTC] PHP  11. call_user_func:{/home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
+[11-Jul-2018 18:18:23 UTC] PHP  12. Closure->{closure:/home/ubuntu/workspace/api/contact/routes.php:30-69}() /home/ubuntu/workspace/api/vendor/slim/slim/Slim/Handlers/Strategies/RequestResponse.php:41
+[11-Jul-2018 18:18:37 UTC] PHP Warning:  require(../functions.php): failed to open stream: No such file or directory in /home/ubuntu/workspace/api/contact/routes.php on line 10
+[11-Jul-2018 18:18:37 UTC] PHP Stack trace:
+[11-Jul-2018 18:18:37 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/contact/index.php:0
+[11-Jul-2018 18:18:37 UTC] PHP   2. require() /home/ubuntu/workspace/api/contact/index.php:6
+[11-Jul-2018 18:18:37 UTC] PHP Fatal error:  require(): Failed opening required '../functions.php' (include_path='.:/usr/share/php:/usr/share/pear') in /home/ubuntu/workspace/api/contact/routes.php on line 10
+[11-Jul-2018 18:18:37 UTC] PHP Stack trace:
+[11-Jul-2018 18:18:37 UTC] PHP   1. {main}() /home/ubuntu/workspace/api/contact/index.php:0
+[11-Jul-2018 18:18:37 UTC] PHP   2. require() /home/ubuntu/workspace/api/contact/index.php:6
